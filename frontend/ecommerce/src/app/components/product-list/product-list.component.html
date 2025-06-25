@@ -1,28 +1,24 @@
-<table mat-table [dataSource]="products">
-  <ng-container matColumnDef="image">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let product">
-      <img [src]="product.imageUrl" height="50" />
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let product">{{ product.name }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="price">
-    <th mat-header-cell *matHeaderCellDef>Price</th>
-    <td mat-cell *matCellDef="let product">
-      {{ product.price | currency : "USD" }}
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef>Quantity</th>
-    <td mat-cell *matCellDef="let product">{{ product.quantity }}</td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
-</table>
+<div class="overflow-x-auto">
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products; track product.sku) {
+      <tr>
+        <td>
+          <img [src]="product.imageUrl" width="50" />
+        </td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency : "USD" }}</td>
+        <td>{{ product.quantity }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
