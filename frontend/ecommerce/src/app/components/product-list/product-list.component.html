@@ -1,17 +1,5 @@
-<!-- <tbody>
-      @for (product of products; track product.sku) {
-      <tr>
-        <td>
-          <img [src]="product.imageUrl" width="50" />
-        </td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.price | currency : "USD" }}</td>
-        <td>{{ product.quantity }}</td>
-      </tr>
-      } -->
-
 <section
-  class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5 overflow-clip"
+  class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-7 mt-10 mb-5"
 >
   @for (product of products; track product.sku) {
   <app-card [product]="product" />
