@@ -1,14 +1,4 @@
-<div class="overflow-x-auto">
-  <table class="table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Quantity</th>
-      </tr>
-    </thead>
-    <tbody>
+<!-- <tbody>
       @for (product of products; track product.sku) {
       <tr>
         <td>
@@ -18,7 +8,12 @@
         <td>{{ product.price | currency : "USD" }}</td>
         <td>{{ product.quantity }}</td>
       </tr>
-      }
-    </tbody>
-  </table>
-</div>
+      } -->
+
+<section
+  class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5 overflow-clip"
+>
+  @for (product of products; track product.sku) {
+  <app-card [product]="product" />
+  }
+</section>

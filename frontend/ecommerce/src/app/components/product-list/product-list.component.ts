@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
 import { CurrencyPipe } from '@angular/common';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-product-list',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, CardComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
