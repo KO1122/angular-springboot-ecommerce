@@ -1,0 +1,16 @@
+<nav>
+  <h2 class="text-lg font-semibold text-gray-800">Categories</h2>
+
+  <ul class="mt-4">
+    @for (category of productCategories; track category.id) {
+    <li class="mb-2">
+      <a
+        [routerLink]="['/category', category.id]"
+        class="block py-2 px-4 rounded hover:bg-gray-100 text-gray-700"
+        routerLinkActive="active-link"
+        >{{ category.categoryName }}</a
+      >
+    </li>
+    }
+  </ul>
+</nav>
