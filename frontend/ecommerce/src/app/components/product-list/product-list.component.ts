@@ -16,6 +16,7 @@ export class ProductListComponent implements OnInit {
   private route = inject(ActivatedRoute);
   products: Product[] = [];
   categoryId!: number;
+  searchMode: boolean = false;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -24,6 +25,26 @@ export class ProductListComponent implements OnInit {
   }
 
   listProducts() {
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
+
+    if (this.searchMode) {
+      this.handleSearchProducts();
+    } else {
+      this.handleListProducts();
+    }
+  }
+
+  // list products based on search keyword
+  handleSearchProducts() {
+    const keyword: string = this.route.snapshot.paramMap.get('keyword')!;
+
+    this.productService.searchProducts(keyword).subscribe((data) => {
+      this.products = data;
+    });
+  }
+
+  // list products based on category
+  handleListProducts() {
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
     if (hasCategoryId) {

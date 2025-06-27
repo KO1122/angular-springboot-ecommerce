@@ -1,0 +1,15 @@
+<div class="join">
+  <input
+    type="text"
+    placeholder="Search"
+    class="input w-24 md:w-auto focus:outline-none focus:ring-0"
+    #searchBarInput
+    (keyup.enter)="getSearchResults(searchBarInput.value)"
+  />
+  <button
+    class="btn btn-warning join-item"
+    (click)="getSearchResults(searchBarInput.value)"
+  >
+    <img src="svgs/magnifying_glass.svg" />
+  </button>
+</div>
