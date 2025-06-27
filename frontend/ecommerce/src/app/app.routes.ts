@@ -3,18 +3,15 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
+  { path: 'product/:id', component: ProductDetailsComponent },
   { path: 'search/:keyword', component: HomeComponent },
   {
     path: 'category/:id',
     component: HomeComponent,
   },
   {
-    path: 'product/:id',
-    component: ProductDetailsComponent,
+    path: '',
+    component: HomeComponent,
   },
   {
     path: '**',

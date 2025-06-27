@@ -1,4 +1,4 @@
-@if (products.length !== 0) {
+@if (products.length > 0) {
 <section
   class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-7 mt-10 mb-5"
 >
@@ -7,8 +7,8 @@
   }
 </section>
 
-} @else {
-<div role="alert" class="h-screen">
+} @else if (products.length === 0 && searchMode) {
+<div role="alert">
   <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
     <svg
       xmlns="http://www.w3.org/2000/svg"

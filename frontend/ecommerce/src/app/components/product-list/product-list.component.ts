@@ -21,12 +21,12 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
+      window.scrollTo(0, 0);
     });
   }
 
   listProducts() {
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
-
     if (this.searchMode) {
       this.handleSearchProducts();
     } else {
