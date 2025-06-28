@@ -6,6 +6,11 @@
   <app-card [product]="product" />
   }
 </section>
+<app-pagination
+  [pageNumber]="pageNumber"
+  [pageSize]="pageSize"
+  [totalElements]="totalElements"
+/>
 
 } @else if (products.length === 0 && searchMode) {
 <div role="alert">
