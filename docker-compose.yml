@@ -1,0 +1,47 @@
+services:
+  mysqldb:
+    image: mysql:8.0
+    container_name: mysqldb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3316:3306" # Host port: Container port
+    volumes:
+      - "./backend/spring-boot-ecommerce/sql-scripts/02-create-100-products.sql:/docker-entrypoint-initdb.d/1.sql"
+    networks:
+      - springboot-mysql
+
+  spring-boot-app:
+    container_name: springbootapp
+    build:
+      context: ./backend/spring-boot-ecommerce
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+    networks:
+      - springboot-mysql
+
+  angular-app:
+    container_name: angularapp
+    build:
+      context: ./frontend/ecommerce
+    restart: always
+    ports:
+      - "4201:4200"
+    depends_on:
+      - spring-boot-app
+    networks:
+      - springboot-mysql
+    command: >
+      bash -c "npm start"
+
+networks:
+  springboot-mysql:
+    driver: bridge
